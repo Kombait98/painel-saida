@@ -36,7 +36,7 @@ cd sistema-saida-escolar
 # Instale as dependências
 npm install
 
-
+```
 
 ### 2. Executando Localmente (Apenas no seu PC)
 
