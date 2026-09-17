@@ -1,4 +1,4 @@
-```markdown
+
 # 🏫 Sistema de Saída Escolar
 
 Uma aplicação web desenvolvida para agilizar, organizar e modernizar o processo de saída de alunos em escolas. O sistema conecta a portaria às salas de aula, permitindo que o porteiro chame os alunos e os professores respondam em tempo real.
@@ -36,7 +36,7 @@ cd sistema-saida-escolar
 # Instale as dependências
 npm install
 
-```
+
 
 ### 2. Executando Localmente (Apenas no seu PC)
 
