@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+```markdown
+# 🏫 Sistema de Saída Escolar
 
-## Getting Started
+Uma aplicação web desenvolvida para agilizar, organizar e modernizar o processo de saída de alunos em escolas. O sistema conecta a portaria às salas de aula, permitindo que o porteiro chame os alunos e os professores respondam em tempo real.
 
-First, run the development server:
+## ✨ Funcionalidades
+
+- **Painel da Portaria (Mobile First):** Visão agrupada por turmas (formato sanfona). Permite chamar o aluno, chamar novamente e confirmar a entrega ao responsável.
+- **Painel da Sala de Aula (Desktop/Tablet):** Alertas visuais automáticos das turmas que possuem alunos solicitados. Permite ao professor responder se o aluno "Já saiu" ou se está "Se arrumando".
+- **Comunicação de Status:** Fluxo completo de status (`sala` ➔ `chamado` ➔ `se_arrumando` ➔ `a_caminho` ➔ `entregue`).
+
+## 🛠️ Tecnologias Utilizadas
+
+- **[Next.js](https://nextjs.org/)** (App Router) - Framework React
+- **[Tailwind CSS](https://tailwindcss.com/)** - Estilização da interface
+- **JavaScript** - Lógica da aplicação
+- **Node.js (Next API Routes)** - Mock de API para simulação de banco de dados
+
+---
+
+## 🚀 Como Executar o Projeto
+
+### Pré-requisitos
+Certifique-se de ter o [Node.js](https://nodejs.org/) instalado em sua máquina.
+
+### 1. Instalação
+Clone o repositório e instale as dependências:
+
+```bash
+# Clone este repositório
+git clone [https://github.com/SEU_USUARIO/sistema-saida-escolar.git](https://github.com/SEU_USUARIO/sistema-saida-escolar.git)
+
+# Acesse a pasta do projeto
+cd sistema-saida-escolar
+
+# Instale as dependências
+npm install
+
+```
+
+### 2. Executando Localmente (Apenas no seu PC)
+
+Se deseja apenas ver rodando no navegador do seu computador:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse: [http://localhost:3000](http://localhost:3000?utm_source=gemini)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 3. Executando na Rede Local (Para testar no Celular/Tablet)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Para acessar o painel do porteiro pelo seu celular, o servidor precisa ser exposto na sua rede Wi-Fi:
 
-## Learn More
+```bash
+npm run dev -- -H 0.0.0.0
 
-To learn more about Next.js, take a look at the following resources:
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> **⚠️ Atenção (Erro Blocked cross-origin):**
+> As versões mais recentes do Next.js bloqueiam o acesso de outros IPs por segurança. Se você tentar acessar pelo celular (ex: `http://192.168.1.10:3000`) e os dados não carregarem, adicione o IP do seu celular no arquivo `next.config.mjs`:
+> ```javascript
+> /** @type {import('next').NextConfig} */
+> const nextConfig = {
+>   allowedDevOrigins: ['SEU_IP_AQUI'], // Ex: '192.168.1.10'
+> };
+> export default nextConfig;
+> 
+> ```
+> 
+> 
+> Após isso, reinicie o servidor.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🏗️ Estrutura do Projeto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* `/src/app/api/alunos` - Rota da API que simula o banco de dados.
+* `/src/app/portaria` - Interface dedicada ao porteiro.
+* `/src/app/sala` - Interface dedicada ao professor em sala de aula.
+* `/src/app/page.js` - Menu inicial de navegação.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔮 Próximos Passos (Evolução para Produção)
+
+Para implementar este sistema em um ambiente escolar real, recomenda-se:
+
+1. Substituir o banco de dados em memória por um SGBD real (PostgreSQL, MySQL, etc).
+2. Substituir as requisições em intervalo (*Short Polling*) por **WebSockets** (ex: Socket.io) ou **Server-Sent Events (SSE)** para comunicação instantânea e menor consumo de rede.
+3. Adicionar um sistema de Autenticação (Login) para professores e porteiros.
+
+```
+
+Não se esqueça de editar o link `[https://github.com/SEU_USUARIO/sistema-saida-escolar.git](https://github.com/SEU_USUARIO/sistema-saida-escolar.git)` no passo de instalação, colocando o link real do seu repositório no GitHub!
+
+```
