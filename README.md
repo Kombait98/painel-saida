@@ -80,17 +80,3 @@ npm run dev -- -H 0.0.0.0
 * `/src/app/portaria` - Interface dedicada ao porteiro.
 * `/src/app/sala` - Interface dedicada ao professor em sala de aula.
 * `/src/app/page.js` - Menu inicial de navegação.
-
-## 🔮 Próximos Passos (Evolução para Produção)
-
-Para implementar este sistema em um ambiente escolar real, recomenda-se:
-
-1. Substituir o banco de dados em memória por um SGBD real (PostgreSQL, MySQL, etc).
-2. Substituir as requisições em intervalo (*Short Polling*) por **WebSockets** (ex: Socket.io) ou **Server-Sent Events (SSE)** para comunicação instantânea e menor consumo de rede.
-3. Adicionar um sistema de Autenticação (Login) para professores e porteiros.
-
-```
-
-Não se esqueça de editar o link `[https://github.com/SEU_USUARIO/sistema-saida-escolar.git](https://github.com/SEU_USUARIO/sistema-saida-escolar.git)` no passo de instalação, colocando o link real do seu repositório no GitHub!
-
-```
